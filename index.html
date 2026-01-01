@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rockholt Communications LLC — Keep your family connected — securely.</title>
+  <meta name="description" content="Family-focused email identities under @rockholt.com. Privacy-first, Google Workspace powered, managed support. Keep your family connected — securely." />
+
+  <style>
+    :root{
+      --blue:#0D3B66;       /* deep blue */
+      --blue2:#0b2f52;
+      --gray:#EEF2F7;       /* light gray */
+      --ink:#0b1220;
+      --muted:#5a677a;
+      --card:#ffffff;
+      --line:#d8e0ea;
+      --shadow: 0 12px 30px rgba(13,59,102,.12);
+      --radius: 18px;
+      --radius2: 24px;
+      --max: 1100px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--ink);
+      background: linear-gradient(180deg, #ffffff 0%, var(--gray) 70%);
+      line-height:1.5;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:0 20px; }
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:50;
+      background: rgba(255,255,255,.82);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid rgba(216,224,234,.8);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px; padding:12px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px; min-width: 240px;
+    }
+
+    /* Replace your old gradient with an image-backed logo */
+    .logo{
+      width:38px; height:38px; border-radius:12px;
+      background-color: transparent;
+      background-image:url("logo.png"); /* put logo.png next to this html file */
+      background-repeat:no-repeat;
+      background-position:center;
+      background-size:contain; /* keeps clear space around logo */
+      box-shadow: 0 10px 22px rgba(13,59,102,.18);
+      border:1px solid rgba(13,59,102,.10);
+    }
+
+    .brand h1{
+      font-size:15px; margin:0; letter-spacing:.2px;
+      color:var(--blue);
+    }
+    .brand .tag{
+      display:block;
+      font-size:12px;
+      color:var(--muted);
+      margin-top:2px;
+    }
+
+    .navlinks{
+      display:flex; align-items:center; gap:16px;
+      font-size:13px; color:var(--muted);
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .navlinks a{
+      padding:8px 10px;
+      border-radius:999px;
+    }
+    .navlinks a:hover{ background: rgba(13,59,102,.06); color:var(--blue); }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 16px;
+      border-radius:999px;
+      font-weight:600;
+      border:1px solid rgba(13,59,102,.18);
+      box-shadow: 0 10px 22px rgba(13,59,102,.12);
+      transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+      cursor:pointer;
+      white-space:nowrap;
+    }
+    .btn:hover{ transform: translateY(-1px); box-shadow: 0 14px 28px rgba(13,59,102,.16); }
+    .btn.primary{
+      background: linear-gradient(135deg, var(--blue), #1a66b3);
+      color:#fff;
+      border-color: rgba(13,59,102,.22);
+    }
+    .btn.ghost{
+      background:#fff;
+      color:var(--blue);
+    }
+
+    /* Hero */
+    .hero{
+      padding:56px 0 36px;
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:24px;
+      align-items:stretch;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 12px;
+      border-radius:999px;
+      background: rgba(13,59,102,.06);
+      color:var(--blue);
+      font-size:12px;
+      border:1px solid rgba(13,59,102,.10);
+    }
+    .hero h2{
+      margin:14px 0 12px;
+      font-size:42px;
+      letter-spacing:-.6px;
+      line-height:1.12;
+      color:var(--blue2);
+    }
+    .hero p{
+      margin:0;
+      color:var(--muted);
+      font-size:16px;
+      max-width: 60ch;
+    }
+    .ctaRow{
+      display:flex; gap:12px; flex-wrap:wrap;
+      margin-top:18px;
+    }
+    .miniNote{
+      margin-top:10px;
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    .card{
+      background: var(--card);
+      border: 1px solid rgba(216,224,234,.9);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+    }
+    .heroCard{
+      padding:20px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      min-height: 100%;
+    }
+    .heroCard h3{
+      margin:0 0 10px;
+      font-size:14px;
+      color:var(--blue);
+      letter-spacing:.2px;
+    }
+    .heroList{
+      margin:0; padding:0; list-style:none;
+      display:grid; gap:10px;
+      color:var(--ink);
+      font-size:13px;
+    }
+    .check{
+      display:flex; gap:10px; align-items:flex-start;
+    }
+    .dot{
+      width:18px; height:18px; border-radius:6px;
+      background: rgba(13,59,102,.10);
+      border:1px solid rgba(13,59,102,.14);
+      flex:0 0 auto;
+      display:grid; place-items:center;
+      color:var(--blue);
+      font-weight:900;
+      font-size:12px;
+      margin-top:1px;
+    }
+
+    /* Sections */
+    section{ padding:34px 0; }
+    .sectionHead{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:16px; margin-bottom:14px;
+    }
+    .sectionHead h3{
+      margin:0;
+      font-size:22px;
+      color:var(--blue2);
+      letter-spacing:-.2px;
+    }
+    .sectionHead p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      max-width: 60ch;
+    }
+
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .feature{
+      padding:16px;
+    }
+    .feature h4{
+      margin:0 0 6px;
+      color:var(--blue);
+      font-size:14px;
+    }
+    .feature p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* Pricing */
+    .pricingGrid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:14px;
+    }
+    .priceCard{
+      padding:18px;
+      position:relative;
+      overflow:hidden;
+    }
+    .badge{
+      position:absolute; top:14px; right:14px;
+      font-size:11px;
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(13,59,102,.08);
+      border:1px solid rgba(13,59,102,.12);
+      color:var(--blue);
+      font-weight:700;
+    }
+    .priceTitle{
+      display:flex; align-items:baseline; justify-content:space-between;
+      gap:10px;
+    }
+    .priceTitle h4{
+      margin:0;
+      font-size:16px;
+      color:var(--blue2);
+    }
+    .price{
+      font-size:28px;
+      color:var(--blue);
+      font-weight:800;
+      letter-spacing:-.3px;
+    }
+    .per{ font-size:12px; color:var(--muted); font-weight:600; }
+    .priceDesc{
+      margin:8px 0 12px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .bullets{
+      margin:0; padding-left:18px;
+      color:var(--ink);
+      font-size:13px;
+      display:grid; gap:6px;
+    }
+    .priceCta{
+      margin-top:14px;
+      display:flex; gap:10px; flex-wrap:wrap;
+    }
+
+    /* FAQ */
+    details{
+      background:#fff;
+      border:1px solid rgba(216,224,234,.9);
+      border-radius:14px;
+      padding:12px 14px;
+      box-shadow: 0 10px 22px rgba(13,59,102,.08);
+    }
+    details + details{ margin-top:10px; }
+    summary{
+      cursor:pointer;
+      font-weight:700;
+      color:var(--blue2);
+      list-style:none;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    details p{ margin:10px 0 0; color:var(--muted); font-size:13px; }
+
+    /* Footer */
+    footer{
+      padding:24px 0 34px;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .footRow{
+      display:flex; align-items:flex-start; justify-content:space-between;
+      gap:16px; flex-wrap:wrap;
+      border-top: 1px solid rgba(216,224,234,.9);
+      padding-top:16px;
+    }
+    .smallLinks a{ color:var(--muted); padding:0 8px; }
+    .smallLinks a:hover{ color:var(--blue); }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .heroGrid{ grid-template-columns: 1fr; }
+      .grid3{ grid-template-columns: 1fr; }
+      .pricingGrid{ grid-template-columns: 1fr; }
+      .hero h2{ font-size:34px; }
+      .brand{ min-width: unset; }
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap">
+    <div class="nav">
+      <a class="brand" href="#top" aria-label="Rockholt Communications home">
+        <div class="logo" role="img" aria-label="Rockholt Communications logo"></div>
+        <div>
+          <h1>Rockholt Communications LLC <span class="tag">Keep your family connected — securely.</span></h1>
+        </div>
+      </a>
+
+      <nav class="navlinks" aria-label="Primary navigation">
+        <a href="#why">Why it matters</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#how">How it works</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn ghost" href="#contact">Contact</a>
+        <a class="btn primary" href="#get-started">Get started</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- Hero -->
+  <div class="hero">
+    <div class="wrap">
+      <div class="heroGrid">
+        <div>
+          <div class="pill">Family identity • Privacy-first • Google Workspace powered</div>
+          <h2>Email that carries your family name — safely.</h2>
+          <p>
+            Rockholt Communications LLC provides secure, family-focused email identities under
+            <strong>@rockholt.com</strong>. Built on Google Workspace, managed with care, and designed
+            to preserve family identity and digital continuity across generations.
+          </p>
+
+          <div class="ctaRow" id="get-started">
+            <a class="btn primary" href="#contact">Request an invite</a>
+            <a class="btn ghost" href="#pricing">View pricing</a>
+          </div>
+          <div class="miniNote">
+            Built for Rockholt families. Simple annual billing. Real human support.
+          </div>
+        </div>
+
+        <aside class="card heroCard" aria-label="Highlights">
+          <div>
+            <h3>What you get</h3>
+            <ul class="heroList">
+              <li class="check"><span class="dot">✓</span><span>Up to 5 inboxes per family plan (plus aliases)</span></li>
+              <li class="check"><span class="dot">✓</span><span>Google Workspace reliability and security</span></li>
+              <li class="check"><span class="dot">✓</span><span>Privacy-first: no ads, no data mining</span></li>
+              <li class="check"><span class="dot">✓</span><span>Provisioning, support, and account management included</span></li>
+              <li class="check"><span class="dot">✓</span><span>A unified family identity that lasts</span></li>
+            </ul>
+          </div>
+
+          <div style="margin-top:16px; border-top:1px solid rgba(216,224,234,.9); padding-top:14px;">
+            <div style="font-size:12px; color:var(--muted);">
+              <strong style="color:var(--blue2);">Tip:</strong> Use addresses like
+              <em>first@rockholt.com</em>, <em>family@rockholt.com</em>, or <em>events@rockholt.com</em>.
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <!-- Why -->
+  <section id="why">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <h3>Why it matters</h3>
+          <p>A family name is a story. Your email identity should reflect it — with safety, continuity, and pride.</p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="card feature">
+          <h4>Family identity</h4>
+          <p>Bring your household under a shared, professional domain that’s easy to remember and meaningful to keep.</p>
+        </div>
+        <div class="card feature">
+          <h4>Privacy-first</h4>
+          <p>No ad-based business model. Your inbox is for communication — not profiling.</p>
+        </div>
+        <div class="card feature">
+          <h4>Secure & supported</h4>
+          <p>Powered by Google Workspace. Managed setup, account lifecycle, and real-person support included.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <h3>Simple annual pricing</h3>
+          <p>One plan for families, one plan for individuals — clear, predictable, and designed for long-term continuity.</p>
+        </div>
+      </div>
+
+      <div class="pricingGrid">
+        <div class="card priceCard">
+          <div class="badge">Most popular</div>
+          <div class="priceTitle">
+            <h4>Family Plan</h4>
+            <div class="price">$199 <span class="per">/ year</span></div>
+          </div>
+          <div class="priceDesc">A shared family identity with up to five inboxes under @rockholt.com.</div>
+          <ul class="bullets">
+            <li>Up to 5 individual inboxes</li>
+            <li>Managed provisioning & ongoing support</li>
+            <li>Spam, phishing, and malware protections</li>
+            <li>Optional aliases (e.g., family@rockholt.com)</li>
+            <li>Designed for households sharing the Rockholt name</li>
+          </ul>
+          <div class="priceCta">
+            <a class="btn primary" href="#contact">Start Family Plan</a>
+            <a class="btn ghost" href="#faq">Questions?</a>
+          </div>
+        </div>
+
+        <div class="card priceCard">
+          <div class="priceTitle">
+            <h4>Individual Plan</h4>
+            <div class="price">$149 <span class="per">/ year</span></div>
+          </div>
+          <div class="priceDesc">For Rockholt family members who want a single, professional identity.</div>
+          <ul class="bullets">
+            <li>1 inbox under @rockholt.com</li>
+            <li>Managed provisioning & support</li>
+            <li>Security protections included</li>
+            <li>Great for students, young adults, and retirees</li>
+          </ul>
+          <div class="priceCta">
+            <a class="btn primary" href="#contact">Start Individual Plan</a>
+            <a class="btn ghost" href="#how">How it works</a>
+          </div>
+        </div>
+      </div>
+
+      <p style="margin:14px 0 0; color:var(--muted); font-size:12px;">
+        Note: Rockholt Communications uses Google Workspace as the service foundation and includes administrative management in the subscription.
+      </p>
+    </div>
+  </section>
+
+  <!-- How -->
+  <section id="how">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <h3>How it works</h3>
+          <p>Friendly onboarding, secure setup, and continuity you can count on.</p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="card feature">
+          <h4>1) Request an invite</h4>
+          <p>Tell us your preferred addresses (e.g., first@rockholt.com). We confirm availability and eligibility.</p>
+        </div>
+        <div class="card feature">
+          <h4>2) Secure setup</h4>
+          <p>We provision your accounts using Google Workspace, set basic security defaults, and deliver login details.</p>
+        </div>
+        <div class="card feature">
+          <h4>3) Ongoing care</h4>
+          <p>Support, account updates, and lifecycle management are included — designed for families, not IT departments.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <h3>FAQ</h3>
+          <p>Clear answers to the most common questions.</p>
+        </div>
+      </div>
+
+      <details>
+        <summary>Is this a full email inbox or just forwarding?</summary>
+        <p>These are full inboxes hosted on Google Workspace (Business Starter class), managed by Rockholt Communications for setup and support.</p>
+      </details>
+
+      <details>
+        <summary>How do you keep the service “family-only”?</summary>
+        <p>Rockholt Communications is designed for families sharing the Rockholt surname. Access can be managed by invite and onboarding verification (process can be refined over time).</p>
+      </details>
+
+      <details>
+        <summary>What security features are included?</summary>
+        <p>Google Workspace provides built-in spam and malware protection. We can also encourage strong passwords and multi-factor authentication (MFA) for better protection.</p>
+      </details>
+
+      <details>
+        <summary>Can we create shared addresses like family@rockholt.com?</summary>
+        <p>Yes—aliases can be configured for shared roles and family functions (events, travel, family, etc.).</p>
+      </details>
+
+      <details>
+        <summary>What happens if we want to cancel?</summary>
+        <p>Accounts can be offboarded cleanly. If you want continuity, we can plan a transition path so you don’t lose important messages.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <h3>Contact</h3>
+          <p>Tell us which plan you want and your preferred addresses. We’ll reply with next steps.</p>
+        </div>
+      </div>
+
+      <div class="card" style="padding:18px;">
+        <p style="margin:0 0 10px; color:var(--muted); font-size:13px;">
+          Replace the placeholder email/phone below with your preferred contact details.
+        </p>
+
+        <div style="display:grid; gap:10px; font-size:14px;">
+          <div><strong style="color:var(--blue2);">Email:</strong> <a href="mailto:hello@rockholt.com">hello@rockholt.com</a></div>
+          <div><strong style="color:var(--blue2);">Subject suggestion:</strong> “Family Plan Request”</div>
+          <div><strong style="color:var(--blue2);">Include:</strong> desired inbox names + number of family members</div>
+        </div>
+
+        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn primary" href="mailto:hello@rockholt.com?subject=Family%20Plan%20Request&body=Hi%20Rockholt%20Communications%2C%0A%0AI%E2%80%99d%20like%20to%20start%20a%20Family%20Plan.%20Preferred%20addresses%3A%0A-%20%0A-%20%0A-%20%0A%0ANumber%20of%20family%20members%3A%20%0A%0AThank%20you%2C">Email to get started</a>
+          <a class="btn ghost" href="#pricing">Review pricing</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footRow">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div style="color:var(--blue2); font-weight:800;">Rockholt Communications LLC</div>
+          <div>Keep your family connected — securely.</div>
+        </div>
+      </div>
+
+      <div class="smallLinks" aria-label="Footer links">
+        <a href="#why">Why</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#how">How</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+
+    <div style="margin-top:10px;">
+      © <span id="year"></span> Rockholt Communications LLC. All rights reserved.
+      <div style="margin-top:6px; color:var(--muted);">
+        This site is informational and describes a family-focused email identity service built on Google Workspace.
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
