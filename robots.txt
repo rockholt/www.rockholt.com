@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Block all interaction and data-related paths
+Disallow: /intake/
+Disallow: /forms/
+Disallow: /appointments/
+Disallow: /sessions/
+Disallow: /portal/
+Disallow: /clients/
+Disallow: /uploads/
+Disallow: /notes/
+Disallow: /private/
+
+# Strongly discourage archival bots
+User-agent: ia_archiver
+Disallow: /
+
+Sitemap: https://psychotherapy.rockholt.com/sitemap.xml

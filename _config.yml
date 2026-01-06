@@ -1,0 +1,29 @@
+title: Kristina Rockholt Psychotherapy
+description: Psychotherapy services, approach, and contact information.
+url: "https://psychotherapy.rockholt.com"
+
+timezone: America/Los_Angeles
+markdown: kramdown
+
+theme: minima
+
+plugins:
+  - jekyll-sitemap
+
+exclude:
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .github
+  - .git
+  - .gitignore
+  - .DS_Store
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
